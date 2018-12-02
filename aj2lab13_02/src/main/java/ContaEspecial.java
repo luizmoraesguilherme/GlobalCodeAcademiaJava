@@ -55,17 +55,20 @@ public class ContaEspecial extends Conta {
      * @param valor:
      *            valor a ser sacado da conta
      */
-    public void saque(double valor) {
+    public void saque(double valor) throws SaldoInsuficienteException {
         System.out.println("Realizando saque de R$ " + valor + " da conta " + getNumero());
-        if (valor > 0) {
-            if (saldo + limite >= valor) {
-                saldo -= valor;
-                acumularIFN(valor);
-            } else
-                System.out.println("Saldo e limite insuficientes");
-        } else {
-            System.out.println("O valor de saque deve ser positivo");
-        }
+        	
+            if (valor > 0) {
+                if (saldo + limite >= valor) {
+                    saldo -= valor;
+                    acumularIFN(valor);
+                } else
+                    throw new SaldoInsuficienteException("Saldo e limite insuficientes");
+            } else {
+                System.out.println("O valor de saque deve ser positivo");
+            }
+            
+        
     }
 
     /**

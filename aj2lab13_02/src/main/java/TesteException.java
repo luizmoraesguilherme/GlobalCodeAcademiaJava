@@ -7,8 +7,14 @@ class TesteException {
         ContaEspecial contaEspecial = new ContaEspecial(2000, "876654", cliente1, agencia, 500);
         ContaPoupanca contaPoupanca = new ContaPoupanca(600, "135646", cliente1, agencia, "01/01/2005");
         
-        contaEspecial.saque(2950.0);
-        contaPoupanca.saque(340.0);
+        try {
+			contaEspecial.saque(2950.0);
+			contaPoupanca.saque(340.0);
+		} catch (SaldoInsuficienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         
         contaEspecial.imprimeDados();
         contaPoupanca.imprimeDados();

@@ -85,7 +85,7 @@ public class Conta implements Tributavel {
      * @param valor
      *            valor a ser sacado da conta
      */
-    public void saque(double valor) {
+    public void saque(double valor) throws SaldoInsuficienteException{
         System.out.println("Realizando saque de R$ " + valor + " da conta " + numero);
         if (valor > 0) {
             if (saldo >= valor) {
